@@ -12,7 +12,6 @@ class NavBar extends StatelessWidget {
 
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: Colors.white,
       height: 50.0,
       padding: const EdgeInsets.only(right: 100.0),
       child: Row(
