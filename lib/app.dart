@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/page_notifier.dart';
-import 'routes/route_delegate.dart';
+import 'routes/router_delegate.dart';
 import 'routes/routeinfoparser.dart';
 
 class App extends StatelessWidget {
@@ -13,7 +13,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routeInformationParser: AppRouteInformationParser(),
       routerDelegate:
-          AppRouteDelegate(notifier: Provider.of<PageNotifier>(context)),
+          AppRouterDelegate(notifier: Provider.of<PageNotifier>(context)),
       title: 'Navigator 2.0',
       theme: ThemeData(
         primarySwatch: Colors.blue,

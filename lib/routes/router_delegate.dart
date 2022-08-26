@@ -8,11 +8,11 @@ import '../pages/pagenotfound.dart';
 import '../providers/page_notifier.dart';
 import 'routes.dart';
 
-class AppRouteDelegate extends RouterDelegate<AppRoute>
+class AppRouterDelegate extends RouterDelegate<AppRoute>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRoute> {
   final PageNotifier notifier;
 
-  AppRouteDelegate({required this.notifier});
+  AppRouterDelegate({required this.notifier});
 
   @override
   GlobalKey<NavigatorState>? get navigatorKey => GlobalKey<NavigatorState>();
@@ -20,21 +20,20 @@ class AppRouteDelegate extends RouterDelegate<AppRoute>
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: navigatorKey,
-      pages: [
-        if (notifier.isUnknown) const MaterialPage(child: PageNotFound()),
-        if (!notifier.isUnknown) const MaterialPage(child: HomePage()),
-        if (notifier.pageName == PageName.home)
-          const MaterialPage(child: HomePage()),
-        if (notifier.pageName == PageName.about)
-          const MaterialPage(child: AboutPage()),
-        if (notifier.pageName == PageName.contact)
-          const MaterialPage(child: ContactPage()),
-        if (notifier.pageName == PageName.services)
-          const MaterialPage(child: ServicesPage()),
-      ],
-      onPopPage: (route, result) => route.didPop(result)
-    );
+        key: navigatorKey,
+        pages: [
+          if (notifier.isUnknown) const MaterialPage(child: PageNotFound()),
+          if (!notifier.isUnknown) const MaterialPage(child: HomePage()),
+          if (notifier.pageName == PageName.home)
+            const MaterialPage(child: HomePage()),
+          if (notifier.pageName == PageName.about)
+            const MaterialPage(child: AboutPage()),
+          if (notifier.pageName == PageName.contact)
+            const MaterialPage(child: ContactPage()),
+          if (notifier.pageName == PageName.services)
+            const MaterialPage(child: ServicesPage()),
+        ],
+        onPopPage: (route, result) => route.didPop(result));
   }
 
 //currentConfiguration is called whenever there might be a change in route
